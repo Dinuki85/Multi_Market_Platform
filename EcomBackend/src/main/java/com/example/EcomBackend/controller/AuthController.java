@@ -4,7 +4,6 @@ import com.example.EcomBackend.dto.SigninRequest;
 import com.example.EcomBackend.dto.SignupRequest;
 import com.example.EcomBackend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/api/auth")
