@@ -1,5 +1,6 @@
 package com.example.EcomBackend.controller;
 
+import com.example.EcomBackend.dto.SigninRequest;
 import com.example.EcomBackend.dto.SignupRequest;
 import com.example.EcomBackend.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class AuthController {
    public String signup(@RequestBody SignupRequest request){
        return authService.register(request);
    }
+    @PostMapping("/signin")
+    public String signup(@RequestBody SigninRequest request){
+        return authService.login(request);
+    }
 
 
 
