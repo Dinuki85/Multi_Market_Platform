@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantity;
     private double totalPrice;
