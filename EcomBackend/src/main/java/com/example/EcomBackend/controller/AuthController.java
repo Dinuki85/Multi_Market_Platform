@@ -26,8 +26,13 @@ public class AuthController {
 
 
     @PostMapping("/signin")
-    public String signup(@RequestBody SigninRequest request){
-        return authService.login(request);
+    public ResponseEntity<Map<String,Object>> signin(@RequestBody SigninRequest request){
+        var loginResult = authService.login(request);
+        boolean success = loginResult != null;
+
+        return  ResponseEntity
+                .status(success ? 200 : 401)
+                .body(Map.of("success",success,"message",success ? "Login Successful" : "Invalid email or password", "role",loginResult.get("role"),"email",loginResult.get("email") ));
     }
 
 

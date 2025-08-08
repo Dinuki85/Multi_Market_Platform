@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Service
 public class AuthService {
     @Autowired
@@ -29,14 +32,22 @@ public class AuthService {
 
     }
 
-    public String login(SigninRequest request){
+    public Map<String, String> login(SigninRequest request) {
+        // Finding the user by email
         User user = userRepository.findByEmail(request.email).orElse(null);
-        if(user == null || !passwordEncoder.matches(request.password, user.getPassword())){
-            return "Invalid email or password";
+
+        // If the user doesn't exist or password doesn't match
+        if (user == null || !passwordEncoder.matches(request.password, user.getPassword())) {
+            return null;  // Login failed
         }
-        return "Login Successfull .Role: "+user.getRole();
 
+        // Creating the Map to return
+        Map<String, String> loginResult = new HashMap<>();
+        loginResult.put("role", user.getRole().toString());
+        loginResult.put("email", user.getEmail());
+
+        // Returning the Map
+        return loginResult;
     }
-
 
 }
