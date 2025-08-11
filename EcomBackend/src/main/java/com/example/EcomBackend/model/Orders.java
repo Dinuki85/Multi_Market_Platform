@@ -24,7 +24,7 @@ public class Orders {
         PENDING,
         ACCEPTED,
         SHIPPED,
-        DELIVERED0
+        DELIVERED;
     }
 
     @Enumerated(EnumType.STRING)
