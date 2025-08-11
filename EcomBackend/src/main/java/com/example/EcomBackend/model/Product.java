@@ -26,11 +26,12 @@ public class Product {
     @JoinColumn(name = "seller_id")
     private User seller;
 
+
     public Product(){
 
     }
 
-    public Product(Long id, String name, String description, double price, int stock, Category category, User seller) {
+    public Product(Long id, String name, String description, double price, int stock, Category category, User seller, Orders order) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -95,4 +96,6 @@ public class Product {
     public void setSeller(User seller) {
         this.seller = seller;
     }
+
+
 }

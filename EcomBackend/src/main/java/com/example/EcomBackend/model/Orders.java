@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,11 +34,11 @@ public class Order {
     private LocalDateTime deliveryDate;
 
 
-    public Order(){
+    public Orders(){
 
     }
 
-    public Order(Long id, int quantity, double totalPrice, Product product, User buyer, OrderStatus status, LocalDateTime orderDate, LocalDateTime deliveryDate) {
+    public Orders(Long id, int quantity, double totalPrice, Product product, User buyer, OrderStatus status, LocalDateTime orderDate, LocalDateTime deliveryDate) {
         this.id = id;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
