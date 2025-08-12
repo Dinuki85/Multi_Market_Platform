@@ -28,6 +28,14 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
+    @GetMapping("/name")
+
+    public List<Product> findProductByName(@PathVariable("name") String name){
+        return productService.getProductByName(name);
+    }
+
+
+
     // Get products by category (For Buyers to filter products by category)
     @GetMapping
     public List<Product> getProductsByCategory(@RequestParam(required = false) String category) {
